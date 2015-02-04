@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 $books = array ();
 require __DIR__ . '/books.inc.php';
 

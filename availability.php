@@ -1,8 +1,10 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 $books = array ();
 require __DIR__ . '/books.inc.php';
 
-$request = json_decode ( file_get_contents ( 'php://input' ) );
+$request = json_decode ( file_get_contents ( 'php://input' ), true );
 
 usleep ( 1000 * rand ( 500, 2000 ) );
 
@@ -35,9 +37,11 @@ if (! isset ( $request ['author'] )) {
 	);
 } else {
 	$candidate = null;
-	foreach ( $books as $candidate ) {
-		if ($candidate ['author'] === $request ['author'] && $candidate ['title'] === $request ['title'])
-			$book = $candidate;
+	foreach ( $books as $authorsBooks) {
+		foreach ($authorsBooks as $candidate) {
+			if ($candidate ['author'] === $request ['author'] && $candidate ['title'] === $request ['title'])
+				$book = $candidate;
+		}
 	}
 	if ($candidate === null) {
 		$response = array (

@@ -24,10 +24,12 @@ $books = array (
 						'pages' => 600 
 				) 
 		),
-		'1' => array (
-				'title' => 'Moby Dick',
-				'author' => 'Joane K. Rowling',
-				'year' => 2013,
-				'pages' => 250 
-		) 
+		'1' => array(
+				array (
+						'title' => 'Moby Dick',
+						'author' => 'Joane K. Rowling',
+						'year' => 2013,
+						'pages' => 250
+				)
+		)
 );
